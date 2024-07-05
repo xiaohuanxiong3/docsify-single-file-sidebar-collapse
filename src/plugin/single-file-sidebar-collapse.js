@@ -1,11 +1,10 @@
-const singleFileSidebarCollapse = () => (hook,vm) => {
+const singleFileSidebarCollapse = () => (hook,vm) =>
 
     hook.doneEach(function (html, next) {
         rewriteHtmlRecursively(document.querySelector(".sidebar-nav"))
         next(html)
     })
 
-}
 
 function rewriteHtmlRecursively(element) {
     element.querySelectorAll("ul").forEach(function (ul) {
@@ -22,3 +21,5 @@ function rewriteHtmlRecursively(element) {
         })
     })
 }
+
+export {singleFileSidebarCollapse};
