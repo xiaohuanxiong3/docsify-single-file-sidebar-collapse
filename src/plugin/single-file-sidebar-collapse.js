@@ -29,13 +29,22 @@ function rewriteHtmlRecursively(element,depth) {
                     nextElement.classList.add("collapse-label");
                 }
                 a.addEventListener("click", function (e) {
-                    // 目前只有点击前a标签对应的li标签是active，即重复点击时，才会进行展开和折叠操作
-                    if (e.target.parentElement.classList.contains("active")) {
-                        var nextUlLabel = e.target.nextElementSibling;
-                        if (nextUlLabel.style.display === "block") {
-                            nextUlLabel.style.display = "none";
+                    var parentLiLabel = e.target.parentElement;
+                    var nextUlLabel = e.target.nextElementSibling;
+                    // 先判断有li标签有子ul标签，才进行展开/折叠相关判断和操作
+                    if (nextUlLabel) {
+                        // 只有点击前a标签对应的第一个父级li标签是active，即重复点击时，进行展开和折叠操作
+                        if (parentLiLabel.classList.contains("active")) {
+                            if (nextUlLabel.style.display === "block") {
+                                nextUlLabel.style.display = "none";
+                            } else {
+                                nextUlLabel.style.display = "block";
+                            }
                         } else {
-                            nextUlLabel.style.display = "block";
+                            // 点击非活跃的节点时，将非展开的ul标签展开
+                            if (nextUlLabel.style.display !== "block") {
+                                nextUlLabel.style.display = "block";
+                            }
                         }
                     }
                 });

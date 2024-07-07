@@ -1,6 +1,6 @@
 {
   "name": "docsify-single-file-sidebar-collapse",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "type": "module",
   "main": "dist/my-plugin.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "devDependencies": {
     "vite": "^4.0.1",
     "playwright": "^1.30.0",
-    "@playwright/test": "^1.30.0"
+    "@playwright/test": "^1.30.0",
+    "vite-plugin-css-injected-by-js": "^3.5.1"
   }
 }
